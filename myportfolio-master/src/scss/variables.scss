@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap');
+$colorscheme2: (
+  Primary: white,
+  Secondary: black,
+  Tertiary: #00aeef,
+  Quaternary: #3086a8,
+  Quinary: rgba(255, 255, 255, 0.212),
+  Senary: rgba(255, 255, 255, 0.01),
+  Septenary: white,
+  Octonary: #3fbdeb,
+  Nonary: white,
+  Denary: white,
+);
+$colorscheme2: (
+  Primary: #ca3e47,
+  Secondary: #313131,
+  Tertiary: #414141,
+  Quaternary: #525252,
+  Quinary: rgba(255, 255, 255, 0.212),
+  Senary: rgba(255, 255, 255, 0.01),
+  Septenary: white,
+  Octonary: #3fbdeb,
+  Nonary: white,
+  Denary: white,
+);
+$colorscheme: (
+  Primary: #f3c623,
+  Secondary: black,
+  Tertiary: white,
+  Quaternary: #861e88,
+  Quinary: #861e8825,
+  Senary: rgba(255, 255, 255, 0.01),
+  Septenary: #8446853b,
+  Octonary: #84468598,
+  Nonary: #9e8323,
+  Denary: white,
+);
+
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-200%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes bgcpulse {
+  0% {
+    background-color: map-get($colorscheme, Primary);
+  }
+  100% {
+    background-color: map-get($colorscheme, Tertiary);
+  }
+}
+@keyframes hbpulse {
+  0% {
+    background-color: map-get($colorscheme, Primary);
+  }
+  100% {
+    background-color: map-get($colorscheme, Quaternary);
+  }
+}
+@keyframes cpulse {
+  0% {
+    color: map-get($colorscheme, Primary);
+  }
+  100% {
+    color: map-get($colorscheme, Tertiary);
+  }
+}
+@keyframes tcpulse {
+  0% {
+    color: map-get($colorscheme, Secondary);
+  }
+  100% {
+    color: map-get($colorscheme, Tertiary);
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(180deg);
+  }
+  30% {
+    transform: rotate(360deg);
+  }
+  40% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(180deg);
+  }
+  80% {
+    transform: rotate(360deg);
+  }
+  90% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+// Solar animation keyframes //
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin-reverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+// Solar animation background keyframe //
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+// Animation with spinning halfcircles //
+.animationBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .animation {
+    max-width: 10rem;
+    width: 100%;
+    height: auto;
+    stroke-linecap: round;
+  }
+  // Circle loading animation //
+  circle {
+    fill: none;
+    stroke-width: 3.5;
+    animation: preloader 5s infinite ease-in-out;
+    transform-origin: 170px 170px;
+    will-change: transform;
+    stroke: map-get($colorscheme, Secondary);
+    &:nth-of-type(1) {
+      stroke-dasharray: 550px;
+    }
+    &:nth-of-type(2) {
+      stroke-dasharray: 500px;
+    }
+    &:nth-of-type(3) {
+      stroke-dasharray: 450px;
+    }
+    &:nth-of-type(4) {
+      stroke-dasharray: 300px;
+    }
+    @for $i from 1 through 4 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: -#{$i * 0.15}s;
+      }
+    }
+  }
+}
